@@ -1,0 +1,84 @@
+maxDepth: 1 Frontier Size 3 nodesExpanded 1
+maxDepth: 2 Frontier Size 3 nodesExpanded 2
+maxDepth: 3 Frontier Size 6 nodesExpanded 5
+maxDepth: 4 Frontier Size 12 nodesExpanded 10
+path_to_goal: ['Up', 'Left', 'Left']
+cost_of_path: 3
+nodes_expanded: 10
+search_depth: 3
+max_search_depth: 4
+running_time: 0.031254
+max_ram_usage: 0.020004864
+
+maxDepth: 1 Frontier Size 4 nodesExpanded 1
+maxDepth: 2 Frontier Size 5 nodesExpanded 2
+maxDepth: 3 Frontier Size 8 nodesExpanded 6
+maxDepth: 4 Frontier Size 9 nodesExpanded 14
+maxDepth: 5 Frontier Size 16 nodesExpanded 22
+maxDepth: 6 Frontier Size 33 nodesExpanded 38
+maxDepth: 7 Frontier Size 62 nodesExpanded 70
+maxDepth: 8 Frontier Size 73 nodesExpanded 130
+maxDepth: 9 Frontier Size 136 nodesExpanded 202
+maxDepth: 10 Frontier Size 201 nodesExpanded 338
+maxDepth: 11 Frontier Size 376 nodesExpanded 538
+maxDepth: 12 Frontier Size 513 nodesExpanded 914
+maxDepth: 13 Frontier Size 966 nodesExpanded 1426
+maxDepth: 14 Frontier Size 1297 nodesExpanded 2390
+maxDepth: 15 Frontier Size 2368 nodesExpanded 3686
+maxDepth: 16 Frontier Size 3084 nodesExpanded 6054
+maxDepth: 17 Frontier Size 5482 nodesExpanded 9138
+maxDepth: 18 Frontier Size 6737 nodesExpanded 14620
+maxDepth: 19 Frontier Size 11132 nodesExpanded 21356
+maxDepth: 20 Frontier Size 12209 nodesExpanded 32488
+maxDepth: 21 Frontier Size 18613 nodesExpanded 44696
+path_to_goal: ['Down', 'Right', 'Up', 'Up', 'Left', 'Down', 'Right', 'Down', 'Left', 'Up', 'Left', 'Up', 'Right', 'Right', 'Down', 'Down', 'Left', 'Left', 'Up', 'Up']
+cost_of_path: 20
+nodes_expanded: 54094
+search_depth: 20
+max_search_depth: 21
+running_time: 722.65317
+max_ram_usage: 0.040411136
+
+maxDepth: 1 Frontier Size 2 nodesExpanded 1
+maxDepth: 2 Frontier Size 3 nodesExpanded 2
+maxDepth: 3 Frontier Size 4 nodesExpanded 4
+maxDepth: 4 Frontier Size 9 nodesExpanded 8
+maxDepth: 5 Frontier Size 18 nodesExpanded 16
+maxDepth: 6 Frontier Size 21 nodesExpanded 32
+maxDepth: 7 Frontier Size 39 nodesExpanded 52
+maxDepth: 8 Frontier Size 63 nodesExpanded 91
+maxDepth: 9 Frontier Size 116 nodesExpanded 153
+maxDepth: 10 Frontier Size 153 nodesExpanded 269
+maxDepth: 11 Frontier Size 288 nodesExpanded 421
+maxDepth: 12 Frontier Size 397 nodesExpanded 707
+maxDepth: 13 Frontier Size 748 nodesExpanded 1103
+maxDepth: 14 Frontier Size 1025 nodesExpanded 1851
+maxDepth: 15 Frontier Size 1893 nodesExpanded 2875
+maxDepth: 16 Frontier Size 2513 nodesExpanded 4768
+maxDepth: 17 Frontier Size 4487 nodesExpanded 7280
+maxDepth: 18 Frontier Size 5639 nodesExpanded 11765
+maxDepth: 19 Frontier Size 9528 nodesExpanded 17404
+maxDepth: 20 Frontier Size 10879 nodesExpanded 26932
+maxDepth: 21 Frontier Size 16993 nodesExpanded 37810
+maxDepth: 22 Frontier Size 17111 nodesExpanded 54803
+maxDepth: 23 Frontier Size 23954 nodesExpanded 71913
+maxDepth: 24 Frontier Size 20225 nodesExpanded 95865
+maxDepth: 25 Frontier Size 24047 nodesExpanded 116089
+maxDepth: 26 Frontier Size 15579 nodesExpanded 140136
+maxDepth: 27 Frontier Size 14559 nodesExpanded 155715
+path_to_goal: ['Left', 'Up', 'Up', 'Left', 'Down', 'Right', 'Down', 'Left', 'Up', 'Right', 'Right', 'Up', 'Left', 'Left', 'Down', 'Right', 'Right', 'Up', 'Left', 'Down', 'Down', 'Right', 'Up', 'Left', 'Up', 'Left']
+cost_of_path: 26
+nodes_expanded: 166786
+search_depth: 26
+max_search_depth: 27
+running_time: 7669.449719
+max_ram_usage: 0.054120448
+
+maxDepth: 1 Frontier Size 3 nodesExpanded 1
+path_to_goal: ['Up']
+cost_of_path: 1
+nodes_expanded: 1
+search_depth: 1
+max_search_depth: 1
+running_time: 0.01562548
+max_ram_usage: 0.02002125
