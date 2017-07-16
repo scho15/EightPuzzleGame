@@ -4,7 +4,7 @@ import sys
 from collections import deque
 import heapq
 
-class BFSDFSEightPuzzleGame():
+class EightPuzzleGamev2():
     def GraphSearch(method, initialState):
 
         ## Trying deque rather than queue
@@ -110,11 +110,11 @@ class BFSDFSEightPuzzleGame():
                     initialPath = bfsPath.pop()
 
                 if goalTest == tuple(state):
-                    BFSDFSEightPuzzleGame.Goaltest(initialPath, explored, depthNode, start_time)
+                    EightPuzzleGamev2.Goaltest(initialPath, explored, depthNode, start_time)
                     return 
 
                 explored.add(tuple(state))
-                BFSDFSEightPuzzleGame.determineNeighbour(state,initialPath,explored,bfsFrontier,bfsPath,depthNode)
+                EightPuzzleGamev2.determineNeighbour(method, state, initialPath, explored, bfsFrontier, bfsPath, depthNode)
 
             print(initialState)
             return
@@ -161,39 +161,49 @@ class BFSDFSEightPuzzleGame():
                 distance += 2
         return distance
 
-    def determineNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode):
+    def determineNeighbour(method, state, initialPath, explored, bfsFrontier, bfsPath, depthNode):
 
         maxDepth = depthNode[0]
         nodesExpanded = depthNode[1]
-        ## Determine Right neighbour
-        if (state.index(0) % 3 != 2):
+        if method == 'dfs':
+            ## Determine Right neighbour
+            EightPuzzleGamev2.determineRightNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode)
+	        ## Determine Left neighbour
+            EightPuzzleGamev2.determineLeftNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode)
+            ## Determine Down neighbour
+            EightPuzzleGamev2.determineDownNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode)
+            ## Determine Up neighbour
+            EightPuzzleGamev2.determineUpNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode)
+        maxDepth = depthNode[0]
+        nodesExpanded += 1
+        if nodesExpanded%5000 == 0:
+            print("maxDepth:", maxDepth, "Frontier Size", len(bfsFrontier), "nodesExpanded", nodesExpanded)
+        maxDepthIndicator = False
+        depthNode[0] = maxDepth
+        depthNode[1] = nodesExpanded
+        return
+
+    def determineUpNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode):
+
+        maxDepth = depthNode[0]
+        if (state.index(0) > 2):
             neighbour = list(state)
             currentPath = list(initialPath)
-            a, b = neighbour.index(0),neighbour.index(0) + 1
+            a, b = neighbour.index(0),neighbour.index(0) - 3
             neighbour[b], neighbour[a] = neighbour[a], neighbour[b]
-            ## print ("Right", neighbour)
-            if tuple(neighbour) not in explored and tuple(neighbour) not in bfsFrontier:
-                bfsFrontier.append(tuple(neighbour))
-                currentPath.append("Right")
-                bfsPath.append(list(currentPath))
-                if len(currentPath) > maxDepth:
-                    maxDepth = len(currentPath)
-                    maxDepthIndicator = True
-	    ## Determine Left neighbour
-        if (state.index(0) % 3 != 0):
-            neighbour = list(state)
-            currentPath = list(initialPath)
-            a, b = neighbour.index(0),neighbour.index(0) - 1
-            neighbour[b], neighbour[a] = neighbour[a], neighbour[b]
-            ## print ("Left", neighbour)
             if tuple(neighbour) not in list(explored) and tuple(neighbour) not in bfsFrontier:
                 bfsFrontier.append(tuple(neighbour))
-                currentPath.append("Left")
+                currentPath.append("Up")
                 bfsPath.append(list(currentPath))
                 if len(currentPath) > maxDepth:
                     maxDepth = len(currentPath)
                     maxDepthIndicator = True
-        ## Determine Down neighbour
+        depthNode[0] = maxDepth
+        return
+
+    def determineDownNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode):
+
+        maxDepth = depthNode[0]
         if (state.index(0) < 6):
             neighbour = list(state)
             currentPath = list(initialPath)
@@ -207,39 +217,58 @@ class BFSDFSEightPuzzleGame():
                 if len(currentPath) > maxDepth:
                     maxDepth = len(currentPath)
                     maxDepthIndicator = True
-        ## Determine Up neighbour
-        if (state.index(0) > 2):
+        depthNode[0] = maxDepth
+        return
+
+    def determineLeftNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode):
+
+        maxDepth = depthNode[0]
+        if (state.index(0) % 3 != 0):
             neighbour = list(state)
             currentPath = list(initialPath)
-            a, b = neighbour.index(0),neighbour.index(0) - 3
+            a, b = neighbour.index(0),neighbour.index(0) - 1
             neighbour[b], neighbour[a] = neighbour[a], neighbour[b]
-            ## print ("Up", neighbour)
+            ## print ("Left", neighbour)
             if tuple(neighbour) not in list(explored) and tuple(neighbour) not in bfsFrontier:
                 bfsFrontier.append(tuple(neighbour))
-                currentPath.append("Up")
+                currentPath.append("Left")
                 bfsPath.append(list(currentPath))
                 if len(currentPath) > maxDepth:
                     maxDepth = len(currentPath)
                     maxDepthIndicator = True
-        nodesExpanded += 1
-        if nodesExpanded%5000 == 0:
-            print("maxDepth:", maxDepth, "Frontier Size", len(bfsFrontier), "nodesExpanded", nodesExpanded)
-        maxDepthIndicator = False
         depthNode[0] = maxDepth
-        depthNode[1] = nodesExpanded
+        return
+
+    def determineRightNeighbour(state, initialPath, explored, bfsFrontier, bfsPath, depthNode):
+
+        maxDepth = depthNode[0]
+        if (state.index(0) % 3 != 2):
+            neighbour = list(state)
+            currentPath = list(initialPath)
+            a, b = neighbour.index(0),neighbour.index(0) + 1
+            neighbour[b], neighbour[a] = neighbour[a], neighbour[b]
+            ## print ("Right", neighbour)
+            if tuple(neighbour) not in explored and tuple(neighbour) not in bfsFrontier:
+                bfsFrontier.append(tuple(neighbour))
+                currentPath.append("Right")
+                bfsPath.append(list(currentPath))
+                if len(currentPath) > maxDepth:
+                    maxDepth = len(currentPath)
+                    maxDepthIndicator = True
+        depthNode[0] = maxDepth
         return
 
     def Goaltest(initialPath, explored, depthNode, start_time):
 
-       maxDepth = depthNode[0]
-       print("path_to_goal:",initialPath)
-       print("cost_of_path:", len(initialPath))
-       print("nodes_expanded:", len(explored))
-       print("search_depth:", len(initialPath))
-       print("max_search_depth:", maxDepth)
-       print("running_time:", round(time.time() - start_time,8))
-       print("max_ram_usage:", round(BFSDFSEightPuzzleGame.SystemResource(),8))
-       return 
+        maxDepth = depthNode[0]
+        print("path_to_goal:",initialPath)
+        print("cost_of_path:", len(initialPath))
+        print("nodes_expanded:", len(explored))
+        print("search_depth:", len(initialPath))
+        print("max_search_depth:", maxDepth)
+        print("running_time:", round(time.time() - start_time,8))
+        print("max_ram_usage:", round(EightPuzzleGamev2.SystemResource(),8))
+        return 
 
     def SystemResource():
         if sys.platform == "win32" or sys.platform == "win64":
@@ -255,5 +284,5 @@ class BFSDFSEightPuzzleGame():
 ## GraphSearch((1,2,5,3,4,0,6,7,8))
 ## GraphSearch('dfs', (1,2,5,3,4,0,6,7,8))
 ## GraphSearch('dfs', (8,6,4,2,1,3,5,7,0))
-BFSDFSEightPuzzleGame.GraphSearch('dfs', (6,1,8,4,0,2,7,3,5))
+EightPuzzleGamev2.GraphSearch('dfs', (6,1,8,4,0,2,7,3,5))
 ## GraphSearch('dfs', (3,1,2,0,4,5,6,7,8))

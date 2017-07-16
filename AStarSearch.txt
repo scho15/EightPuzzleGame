@@ -1,0 +1,22 @@
+function A-STAR-SEARCH (initialState, goalTest)
+	returns SUCCESS or FAILURE: /* Cost f(n) = g(n) + h(n) */
+
+	frontier = Heap.new(initialState)
+	explored = Set.new()
+
+	while not frontier.isEmpty():
+		state = frontier.deleteMin()
+		explored.add(state)
+
+		if goalTest(state):
+		return SUCCESS(state)
+
+		for neighbour in state.neighbours():
+		if neightbour not in frontier union explored:
+			frontier.insert(neighbour)
+		else if neighbour in frontier:
+			frontier.decreaseKey(neighbour)
+
+		return FAILURE
+
+	
