@@ -4,13 +4,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c70a5123-84f5-4597-bf53-d0e0fc478202</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>BFSDFSEightPuzzleGame.py</StartupFile>
+    <StartupFile>EightPuzzleGamev2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>EightPuzzleGame</Name>
     <RootNamespace>EightPuzzleGame</RootNamespace>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
+    <CommandLineArguments>dfs 1,2,5,3,4,0,6,7,8</CommandLineArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +25,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BFSDFSEightPuzzleGame.py" />
+    <Compile Include="driver_3.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

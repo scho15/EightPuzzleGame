@@ -150,7 +150,7 @@ class EightPuzzleGamev2:
                     bfsPath.append(list(currentPath))
                 else:
                     manhattanDistance = EightPuzzleGamev2.Manhattan(tuple(neighbour))
-                    heapq.heappush(bfsFrontier, [manhattanDistance + len(currentPath), tuple(neighbour), list(currentPath)])
+                    heapq.heappush(bfsFrontier, heapq.heapify(manhattanDistance + len(currentPath), tuple(neighbour), list(currentPath)))
                 if len(currentPath) > maxDepth:
                     maxDepth = len(currentPath)
                     maxDepthIndicator = True
